@@ -12,9 +12,10 @@ class TogglingEvents extends React.Component {
         }
         this.toggleEvents = this.toggleEvents.bind(this)
     }
-    // toggling events
+
+    // toggling events to show the food lists under each event
     toggleEvents() {
-        // this key is the event specific key
+        
         this.setState({
             showEventList: !this.state.showEventList
         })
@@ -28,12 +29,31 @@ class TogglingEvents extends React.Component {
         }
     }
 
+    // if/else for deletion of event
+
+    youSure(itemToBeDeleted) {
+        const userResponse = confirm('Are you sure you want to delete this event?')
+        if (userResponse == true) {
+            removeItem(itemToBeDeleted)
+        }
+        else {
+            return null;
+        }
+    }
+
+    // to remove events one at a time
+    removeItem(itemToRemove) {
+        // console.log(itemToRemove);
+        const dbRef = firebase.database().ref('events/' + itemToRemove);
+        dbRef.remove();
+    }
     
     render() {
         return (
             <div>
                 <h2 onClick={() => this.toggleEvents()}>{this.state.event.data.nameOfParty} {this.state.event.data.detailsOfParty}</h2>
                 {this.renderFood(this.state.event.key)}
+                {/* <button onClick={() => this.youSure(this.state.event.key)}>remove!</button>  */}
             </div >
         )
     }
@@ -97,11 +117,17 @@ class FormEvents extends React.Component {
         });
     }
 
+   
+
     render() {
         return (
         <div>
             <form onSubmit={this.handleSubmit}>
+
+                
+
                 <input type="text" name="whatParty" placeholder="What's the party?" onChange={this.handleChange} value={this.state.whatParty} />
+                
 
                 <input type="text" name="partyDetails" placeholder="Tell me about the party" onChange={this.handleChange} value={this.state.partyDetails} />
 
@@ -110,6 +136,7 @@ class FormEvents extends React.Component {
             <section>
                 {this.state.events.map((event) => {
                     return <TogglingEvents event={event} key={event.key}/>
+
                 })}
             </section>
         </div>

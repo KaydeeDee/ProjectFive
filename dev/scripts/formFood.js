@@ -11,6 +11,9 @@ class FormFood extends React.Component {
         this.handleChange = this.handleChange.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.removeItem = this.removeItem.bind(this);
+
     }
 
     handleChange(event) {
@@ -22,7 +25,7 @@ class FormFood extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.props.keyOfEvent);
+        // console.log(this.props.keyOfEvent);
     
         const userAndItemSubmitted = firebase.database().ref('events/' + this.props.keyOfEvent + '/guests');
         const formOne = {
@@ -44,6 +47,7 @@ class FormFood extends React.Component {
             const formOneData = firebaseData.val();
 
             for (let formOne in formOneData) {
+                // formOneData[FormOne].key = itemKey;
                 formOneArray.push({
                     data: formOneData[formOne],
                     key: formOne
@@ -57,6 +61,29 @@ class FormFood extends React.Component {
         });
     }
 
+    // youSure(itemToBeDeleted) {
+    //     const userResponse = confirm('Are you sure you want to delete this event?')
+    //     if (userResponse == true) {
+    //         removeItem(itemToBeDeleted)
+    //     }
+    //     else {
+    //         return null;
+    //     }
+    // }
+
+    removeItem(itemToRemove) {
+        const userResponse = confirm('Are you sure you want to delete this event?')
+        if (userResponse == true) {
+            console.log(itemToRemove);
+            const dbRef = firebase.database().ref('events/' + this.props.keyOfEvent + '/guests/' + itemToRemove);
+            dbRef.remove();
+        }
+        else {
+            return null;
+        }
+    }
+
+
     render() {
         return (
             <div>
@@ -68,7 +95,11 @@ class FormFood extends React.Component {
                     <button>Submit</button>
                 </form>
                 {this.state.formOneTotal.map((element) => {
-                    return <p key={element.key}>{element.data.nameOfUser} {element.data.nameOfFood}</p>
+                    return <div key={element.key}> <p>{element.data.nameOfUser} {element.data.nameOfFood}
+                    </p> 
+                    
+                    <button onClick={() => this.removeItem(element.key)}>remove!</button> 
+                    </div>
                 })}
             </div>
         )

@@ -19,24 +19,29 @@ class App extends React.Component {
     render() {
       return (
         <div>
-          <main>
-            <header className="first-page--header">
-              <h1>hello</h1>
-              <button>start</button>
-            </header>
-            <section>
-              <FormEvents />
-            </section>
-            <section className="main-page--header">
-            <h1>ahh potlucks!</h1>
-            </section>
-            <section className="main-page--food-form">
-            </section>
-            <section className="main-page--food-results">
-              <ul>
-              </ul>
-            </section>
-          </main>
+         
+            <main>
+              <header className="first-page-header--background">
+                <h1>hello</h1>
+                <button>start</button>
+              </header>
+              <section className="main-page--header">
+                <h1>ahh potlucks!</h1>
+              </section>
+
+              <section className="main-page">
+                <FormEvents />
+              </section>
+              
+              <section className="main-page--food-form">
+              </section>
+
+              <section className="main-page--food-results">
+                <ul>
+                </ul>
+              </section>
+            </main>
+         
         </div>
       )
     }
