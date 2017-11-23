@@ -22,7 +22,9 @@ class FormFood extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const userAndItemSubmitted = firebase.database().ref('formOne');
+        console.log(this.props.keyOfEvent);
+    
+        const userAndItemSubmitted = firebase.database().ref('events/' + this.props.keyOfEvent + '/guests');
         const formOne = {
             nameOfUser: this.state.userBringingItem,
             nameOfFood: this.state.itemBeingBrought
@@ -35,7 +37,7 @@ class FormFood extends React.Component {
     }
 
     componentDidMount() {
-        const dbRef = firebase.database().ref('formOne');
+        const dbRef = firebase.database().ref('events/' + this.props.keyOfEvent + '/guests');
 
         dbRef.on("value", (firebaseData) => {
             const formOneArray = [];
@@ -66,7 +68,7 @@ class FormFood extends React.Component {
                     <button>Submit</button>
                 </form>
                 {this.state.formOneTotal.map((element) => {
-                    return <p key={element.key}>{element.data.nameOfUser}{element.data.nameOfFood}</p>
+                    return <p key={element.key}>{element.data.nameOfUser} {element.data.nameOfFood}</p>
                 })}
             </div>
         )
