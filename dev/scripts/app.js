@@ -26,6 +26,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderLists = this.renderLists.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
   
   handleChange(event) {
@@ -70,13 +71,20 @@ class App extends React.Component {
 
     });
   }
+  toggle(key) {
+    console.log(key)
+    this.setState({
+      showEventList: !this.state.showEventList,
+      showKey: key
+    })
+  }
   renderLists() {
     if (this.state.showEventList === false) {
       return (<div>this will be a single event with a form  <FormFood /> </div>)
     } else {
       return (
         this.state.events.map((element) => {
-          return <p key={element.key}>{element.data.nameOfParty}{element.data.detailsOfParty}</p>
+          return <p key={element.key} onClick={() => this.toggle(element.key)}>{element.data.nameOfParty}{element.data.detailsOfParty}</p>
         })
       )
     }
