@@ -3,15 +3,16 @@ import React from 'react';
 class FormFood extends React.Component {
     constructor() {
         super();
-        this.state = ({
+        this.state = {
             formOneTotal: [],
             userBringingItem: '',
             itemBeingBrought: ''
-        })
+        }
         this.handleChange = this.handleChange.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleChange(event) {
         // console.log(event.target.name, event.target.value);
         this.setState({
@@ -47,20 +48,27 @@ class FormFood extends React.Component {
                 })
             }
 
-            console.log(formOneArray);
+            this.setState({
+                formOneTotal: formOneArray
+            });
 
         });
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" name="userBringingItem" placeholder="What's your name?" onChange={this.handleChange} value={this.state.userBringingItem} />
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" name="userBringingItem" placeholder="What's your name?" onChange={this.handleChange} value={this.state.userBringingItem} />
 
-                <input type="text" name="itemBeingBrought" placeholder="What are you bringing?" onChange={this.handleChange} value={this.state.itemBeingBrought} />
+                    <input type="text" name="itemBeingBrought" placeholder="What are you bringing?" onChange={this.handleChange} value={this.state.itemBeingBrought} />
 
-                <button>Submit</button>
-            </form>
+                    <button>Submit</button>
+                </form>
+                {this.state.formOneTotal.map((element) => {
+                    return <p key={element.key}>{element.data.nameOfUser}{element.data.nameOfFood}</p>
+                })}
+            </div>
         )
     }
 }
