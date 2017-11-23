@@ -26,7 +26,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderLists = this.renderLists.bind(this);
-    this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggleEvents.bind(this);
   }
   
   handleChange(event) {
@@ -71,7 +71,7 @@ class App extends React.Component {
 
     });
   }
-  toggle(key) {
+  toggleEvents(key) {
     console.log(key)
     this.setState({
       showEventList: !this.state.showEventList,
