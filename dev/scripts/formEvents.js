@@ -47,7 +47,7 @@ class TogglingEvents extends React.Component {
             <div>
                 <h2 onClick={() => this.toggleEvents()}>{this.state.event.data.nameOfParty} {this.state.event.data.detailsOfParty}</h2>
                 {this.renderFood(this.state.event.key)}
-                <button onClick={() => this.removeItem(this.state.event.key)}>remove events!</button> 
+                <button onClick={() => this.removeItem(this.state.event.key)}>Delete Event 𝗫</button> 
             </div >
         )
     }
@@ -77,16 +77,23 @@ class FormEvents extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const dbRef = firebase.database().ref('events');
-        const typeOfParty = {
-            nameOfParty: this.state.whatParty,
-            detailsOfParty: this.state.partyDetails
+        const nameParty = this.state.whatParty;
+        const detailsAboutParty = this.state.partyDetails;
+        if (nameParty && detailsAboutParty){
+            const dbRef = firebase.database().ref('events');
+            const typeOfParty = {
+                nameOfParty: this.state.whatParty,
+                detailsOfParty: this.state.partyDetails
+            }
+            dbRef.push(typeOfParty);
+            this.setState({
+                whatParty: '',
+                partyDetails: ''
+            });
+        }else {
+            alert('Please put in a full word!');
         }
-        dbRef.push(typeOfParty);
-        this.setState({
-            whatParty: '',
-            partyDetails: ''
-        });
+
     }
 
     componentDidMount() {

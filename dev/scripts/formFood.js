@@ -17,7 +17,6 @@ class FormFood extends React.Component {
     }
 
     handleChange(event) {
-        // console.log(event.target.name, event.target.value);
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -26,17 +25,24 @@ class FormFood extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         // console.log(this.props.keyOfEvent);
-    
-        const userAndItemSubmitted = firebase.database().ref('events/' + this.props.keyOfEvent + '/guests');
-        const formOne = {
-            nameOfUser: this.state.userBringingItem,
-            nameOfFood: this.state.itemBeingBrought
+        const userItem = this.state.userBringingItem.trim();
+        const itemBringing = this.state.itemBeingBrought.trim();
+
+        if (userItem && itemBringing) {
+            const userAndItemSubmitted = firebase.database().ref('events/' + this.props.keyOfEvent + '/guests');
+            const formOne = {
+                nameOfUser: this.state.userBringingItem,
+                nameOfFood: this.state.itemBeingBrought
+            }
+            userAndItemSubmitted.push(formOne);
+            this.setState({
+                userBringingItem: '',
+                itemBeingBrought: ''
+            });
+        } else {
+            alert("Please put in a full word!");
         }
-        userAndItemSubmitted.push(formOne);
-        this.setState({
-            userBringingItem: '',
-            itemBeingBrought: ''
-        });
+    
     }
 
     componentDidMount() {
@@ -47,7 +53,6 @@ class FormFood extends React.Component {
             const formOneData = firebaseData.val();
 
             for (let formOne in formOneData) {
-                // formOneData[FormOne].key = itemKey;
                 formOneArray.push({
                     data: formOneData[formOne],
                     key: formOne
@@ -60,16 +65,6 @@ class FormFood extends React.Component {
 
         });
     }
-
-    // youSure(itemToBeDeleted) {
-    //     const userResponse = confirm('Are you sure you want to delete this event?')
-    //     if (userResponse == true) {
-    //         removeItem(itemToBeDeleted)
-    //     }
-    //     else {
-    //         return null;
-    //     }
-    // }
 
     removeItem(itemToRemove) {
         const userResponse = confirm('Are you sure you want to delete this?')
@@ -98,7 +93,7 @@ class FormFood extends React.Component {
                     return <div key={element.key}> <p>{element.data.nameOfUser} {element.data.nameOfFood}
                     </p> 
                     
-                    <button onClick={() => this.removeItem(element.key)}>remove!</button> 
+                        <button onClick={() => this.removeItem(element.key)}>Delete List Item 𝗫</button> 
                     </div>
                 })}
             </div>
