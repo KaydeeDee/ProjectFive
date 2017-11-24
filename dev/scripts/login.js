@@ -27,18 +27,23 @@ class Login extends React.Component {
     }
     signup(event) {
         event.preventDefault();
-        if (this.state.password === this.state.confirm) {
+        if (this.state.password === this.state.confirm && this.state.password.length <= 6) {
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then((data) => {
+                alert("You have successfully signed up! Click the arrow below to start making your lists!")
 
             })
+        } else {
+            alert("Your password must be at least 6 characters long and should match what was put in 'confirm' password. Please try again!");
         }
 
     }
     login(event) {
         event.preventDefault();
-        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(()=>{
+            firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(()=>{
+                alert("You have successfully logged in! Click in the arrow below to get started!");
         });
+    
 
     }
     render() {
@@ -49,7 +54,7 @@ class Login extends React.Component {
                     <label htmlFor="email">Email: </label>
                     <input type="email" name="email" onChange={this.handleChange} />
                     <label htmlFor="password">Password: </label>
-                    <input type="password" name="password" onChange={this.handleChange} />
+                    <input type="password" placeholder="Password must be at least 6 characters" name="password" onChange={this.handleChange} />
                     <label htmlFor="confirm">Confirm Password:</label>
                     <input type="password" name="confirm" onChange={this.handleChange} />
                     <button>Sign In</button>

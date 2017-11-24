@@ -48,7 +48,7 @@ class TogglingEvents extends React.Component {
                 <div className="second-page--event-boxes">
                     <h2 onClick={() => this.toggleEvents()}>{this.state.event.data.nameOfParty} {this.state.event.data.detailsOfParty}</h2>
                     {this.renderFood(this.state.event.key)}
-                    <button onClick={() => this.removeItem(this.state.event.key)}>Delete Event 𝗫</button> 
+                <button onClick={() => this.removeItem(this.state.event.key)}>𝗫 Delete Event</button> 
                 </div>
             
         )
@@ -142,22 +142,24 @@ class FormEvents extends React.Component {
     }
 
     render() {
+    
         return (
         <div>
             <div className="second-page---top-bar">
-                <div className="wrapper--inner">
-                    <form onSubmit={this.handleSubmit}>
+                    <div className="wrapper--inner">
+                        <h2>Add An Event</h2>
+                        <form onSubmit={this.handleSubmit}>
 
 
-                        <input type="text" name="whatParty" placeholder="What's the party?" onChange={this.handleChange} value={this.state.whatParty} />
-                        
+                            <input type="text" name="whatParty" placeholder="What's the party?" onChange={this.handleChange} value={this.state.whatParty} />
+                            
 
-                        <input type="text" name="partyDetails" placeholder="Tell me about the party" onChange={this.handleChange} value={this.state.partyDetails} />
+                            <input type="text" name="partyDetails" placeholder="Tell me about the party" onChange={this.handleChange} value={this.state.partyDetails} />
 
-                        <button>finished!</button>
-                    </form>
+                            <button>finished!</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
             <div>
                     <section className="wrapper--inner second-page--event-boxes-spacing">
                     {this.state.events.map((event) => {

@@ -9,11 +9,21 @@
 .second-page---top-bar{
     background: pink;
     padding: 1px;
+    text-align: center;
 }
 
 .second-page---top-bar form {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    margin-bottom: 10px;
+    input {
+        margin-right: 5px;
+        border: none;
+    }
+    button {
+        border: none;
+        border-radius: 0;
+    }
 }
 
 .second-page--event-boxes {
@@ -30,4 +40,5 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
