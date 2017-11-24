@@ -74,12 +74,12 @@ class Login extends React.Component {
         }
         return (
             <div>
-                <nav>
+                <div className="header--login">
                     <ul>
                         <li><a href="" className="signup" onClick={this.formToShow}>Sign Up</a></li>
                         <li><a href="" className="login" onClick={this.formToShow}>Log In</a></li>
                     </ul>
-                </nav>
+                </div>
             {loginForm}
             </div>
         )

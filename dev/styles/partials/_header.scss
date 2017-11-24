@@ -6,18 +6,27 @@
     padding: 1px;
 }
 
-nav ul {
+.fa-twitter {
+    margin-top: 15px;
+}
+
+.header--login ul {
     display: flex;
     justify-content: center;
     margin-right: 40px;
 }
 
-nav li {
+.header--login li {
     margin: 10px 10px;
 }
 
 .first-page-header--center-wording {
     text-align: center;
-    margin-top: 50vh;
+    margin-top: 45vh;
     transform: translateY(-50%);
+}
+
+.first-page-header--bottom-a {
+    display: flex;
+    justify-content: flex-end;
 }

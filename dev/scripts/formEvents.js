@@ -46,7 +46,7 @@ class TogglingEvents extends React.Component {
         return (
             
                 <div className="second-page--event-boxes">
-                    <h2 onClick={() => this.toggleEvents()}>{this.state.event.data.nameOfParty} {this.state.event.data.detailsOfParty}</h2>
+                <h2 onClick={() => this.toggleEvents()}>{this.state.event.data.nameOfParty} {this.state.event.data.detailsOfParty + ` ✚`}</h2>
                     {this.renderFood(this.state.event.key)}
                 <button onClick={() => this.removeItem(this.state.event.key)}>𝗫 Delete Event</button> 
                 </div>

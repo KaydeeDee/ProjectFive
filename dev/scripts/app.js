@@ -45,25 +45,25 @@ class App extends React.Component {
           <div>
             <section name="test1" className="second-page">
               <FormEvents />
-            
-            <footer>
-              <button className="footer--signOut" onClick={this.signOut}>Sign Out</button>
-            </footer>
+              <button className="button--signOut" onClick={this.signOut}>Sign Out</button>
             </section>
           </div>
         )
       }
       return (
         <div>
-            <main>
-              <header className="first-page-header--background wrapper--max">
-              <div className="wrapper--footer-nav">
+          <main className="wrapper--max">
+              <header className="first-page-header--background">
+              <nav className="wrapper--footer-nav">
                 <a href="https://twitter.com/intent/tweet?hashtags=havefunthough" className="tweet" target="_blank"><i className="fa fa-twitter" aria-hidden="true"></i></a>
-              </div>
+              </nav>
               <div className="first-page-header--center-wording wrapper--inner">
                   <h1>hello</h1>
                   <Login />
-                <Link to="test1" spy={true} smooth={true} offset={5} duration={1000}><i className="fa fa-chevron-down fa-5x" aria-hidden="true" aria-label="Go Down To Main Section"></i></Link>
+                  <Link to="test1" spy={true} smooth={true} offset={5} duration={1000}><i className="fa fa-chevron-down fa-5x" aria-hidden="true" aria-label="Go Down To Main Section"></i></Link>
+                </div>
+                <div className="wrapper--footer-nav first-page-header--bottom-a">
+                  <a href="#">Made By Katie D'Angelo!</a>
                 </div>
               </header>
               {loggedIn}
