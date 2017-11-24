@@ -11,6 +11,7 @@ class TogglingEvents extends React.Component {
             event: props.event
         }
         this.toggleEvents = this.toggleEvents.bind(this)
+        this.removeItem = this.removeItem.bind(this)
     }
 
     // toggling events to show the food lists under each event
@@ -29,23 +30,16 @@ class TogglingEvents extends React.Component {
         }
     }
 
-    // if/else for deletion of event
-
-    youSure(itemToBeDeleted) {
+    removeItem(itemToRemove) {
         const userResponse = confirm('Are you sure you want to delete this event?')
+        console.log(itemToRemove);
         if (userResponse == true) {
-            removeItem(itemToBeDeleted)
+            const dbRef = firebase.database().ref(`events/${itemToRemove}`);
+            dbRef.remove();
         }
         else {
             return null;
         }
-    }
-
-    // to remove events one at a time
-    removeItem(itemToRemove) {
-        // console.log(itemToRemove);
-        const dbRef = firebase.database().ref('events/' + itemToRemove);
-        dbRef.remove();
     }
     
     render() {
@@ -53,7 +47,7 @@ class TogglingEvents extends React.Component {
             <div>
                 <h2 onClick={() => this.toggleEvents()}>{this.state.event.data.nameOfParty} {this.state.event.data.detailsOfParty}</h2>
                 {this.renderFood(this.state.event.key)}
-                {/* <button onClick={() => this.youSure(this.state.event.key)}>remove!</button>  */}
+                <button onClick={() => this.removeItem(this.state.event.key)}>remove events!</button> 
             </div >
         )
     }
@@ -67,7 +61,6 @@ class FormEvents extends React.Component {
             events: [],
             whatParty: '',
             partyDetails: '',
-            // showEventList: true
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -117,14 +110,13 @@ class FormEvents extends React.Component {
         });
     }
 
-   
+
 
     render() {
         return (
         <div>
             <form onSubmit={this.handleSubmit}>
 
-                
 
                 <input type="text" name="whatParty" placeholder="What's the party?" onChange={this.handleChange} value={this.state.whatParty} />
                 
@@ -136,8 +128,8 @@ class FormEvents extends React.Component {
             <section>
                 {this.state.events.map((event) => {
                     return <TogglingEvents event={event} key={event.key}/>
-
                 })}
+                
             </section>
         </div>
         )

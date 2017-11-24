@@ -19,7 +19,6 @@ class App extends React.Component {
     render() {
       return (
         <div>
-         
             <main>
               <header className="first-page-header--background">
                 <h1>hello</h1>
@@ -31,6 +30,7 @@ class App extends React.Component {
 
               <section className="main-page">
                 <FormEvents />
+              
               </section>
               
               <section className="main-page--food-form">
@@ -41,7 +41,6 @@ class App extends React.Component {
                 </ul>
               </section>
             </main>
-         
         </div>
       )
     }

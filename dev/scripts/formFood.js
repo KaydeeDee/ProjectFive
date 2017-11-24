@@ -72,7 +72,7 @@ class FormFood extends React.Component {
     // }
 
     removeItem(itemToRemove) {
-        const userResponse = confirm('Are you sure you want to delete this event?')
+        const userResponse = confirm('Are you sure you want to delete this?')
         if (userResponse == true) {
             console.log(itemToRemove);
             const dbRef = firebase.database().ref('events/' + this.props.keyOfEvent + '/guests/' + itemToRemove);
