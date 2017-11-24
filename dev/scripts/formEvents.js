@@ -91,26 +91,46 @@ class FormEvents extends React.Component {
 
     componentDidMount() {
         const dbRef = firebase.database().ref('events');
+        firebase.auth().onAuthStateChanged((user) => {
+            if(user) {
+                dbRef.on("value", (firebaseData) => {
+                    const eventsArray = [];
+                    const eventsData = firebaseData.val();
 
-        dbRef.on("value", (firebaseData) => {
-            const eventsArray = [];
-            const eventsData = firebaseData.val();
+                    for (let typeOfParty in eventsData) {
+                        eventsArray.push({
+                            data: eventsData[typeOfParty],
+                            key: typeOfParty
+                        })
+                    }
 
-            for (let typeOfParty in eventsData) {
-                eventsArray.push({
-                    data: eventsData[typeOfParty],
-                    key: typeOfParty
-                })
+                    this.setState({
+                        events: eventsArray
+                    });
+
+                });
+                
             }
 
-            this.setState({
-                events: eventsArray
-            });
-
         });
+
+        // dbRef.on("value", (firebaseData) => {
+        //     const eventsArray = [];
+        //     const eventsData = firebaseData.val();
+
+        //     for (let typeOfParty in eventsData) {
+        //         eventsArray.push({
+        //             data: eventsData[typeOfParty],
+        //             key: typeOfParty
+        //         })
+        //     }
+
+        //     this.setState({
+        //         events: eventsArray
+        //     });
+
+        // });
     }
-
-
 
     render() {
         return (
