@@ -6,7 +6,7 @@ import FormFood from './formFood';
 import FormEvents from './formEvents';
 
 // smooth scroll component
-var Link = Scroll.Link;
+const Link = Scroll.Link;
 
 //  Initialize Firebase
 const config = {
@@ -20,30 +20,33 @@ const config = {
 firebase.initializeApp(config);
 
 class App extends React.Component {
-
     render() {
       return (
         <div>
             <main>
-              <header className="first-page-header--background">
-                <h1>hello</h1>
-                <Login />
-                <Link to="test1" spy={true} smooth={true} offset={-20} duration={1000}>start </Link>
+              <header className="first-page-header--background wrapper--max">
+              <div className="first-page-header--center-wording wrapper--inner">
+                  <h1>hello</h1>
+                  <Login />
+                <Link to="test1" spy={true} smooth={true} offset={5} duration={1000}><i className="fa fa-chevron-down fa-5x" aria-hidden="true" aria-label="Go Down To Main Section"></i></Link>
+                </div>
               </header>
-            <section name="test1" className="main-page--header">
-                <h1>ahh potlucks!</h1>
+            <section name="test1" className="second-page">
+                
               
                 <FormEvents />
               
               </section>
               
-              <section className="main-page--food-form">
+              {/* <section className="main-page--food-form">
               </section>
 
               <section className="main-page--food-results">
                 <ul>
                 </ul>
-              </section>
+              </section> */}
+          
+            
             </main>
         </div>
       )

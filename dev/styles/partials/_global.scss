@@ -1,8 +1,57 @@
+// variables
+
+$primary-color: rgb(34, 30, 30);
+$primary-white: rgb(255, 255, 255);
+$primary-purple: rgb(98, 81, 146);
+$primary-yellow: rgb(187, 169, 56);
+$primary-green: rgb(43, 128, 62);
+
+$header-text: 'Fredoka One', cursive;
+$paragraph-text: 'Raleway', sans-serif;
+
+// mixins
+
+@mixin font-size-value($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: ($sizeValue/10) * 1rem;
+}
+
+// base size
+
+html {
+    font-size: 62.5%;
+}
+
+
+// wrappers
+.wrapper--max {
+    max-width: 1900px;
+    margin: 0 auto;
+}
+
+.wrapper--inner {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.wrapper--footer-nav {
+    max-width: 1300px;
+    margin: 0 auto; 
+}
 
 h1 {
     color: red;
 }
 
-.main-page--header {
-    min-height: 100vh;
+ul {
+    margin: 0
 }
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+

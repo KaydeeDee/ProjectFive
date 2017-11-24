@@ -5,3 +5,19 @@
     background-size: cover;
     padding: 1px;
 }
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    margin-right: 40px;
+}
+
+nav li {
+    margin: 10px 10px;
+}
+
+.first-page-header--center-wording {
+    text-align: center;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+}

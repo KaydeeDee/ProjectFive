@@ -44,11 +44,13 @@ class TogglingEvents extends React.Component {
     
     render() {
         return (
-            <div>
-                <h2 onClick={() => this.toggleEvents()}>{this.state.event.data.nameOfParty} {this.state.event.data.detailsOfParty}</h2>
-                {this.renderFood(this.state.event.key)}
-                <button onClick={() => this.removeItem(this.state.event.key)}>Delete Event 𝗫</button> 
-            </div >
+            
+                <div className="second-page--event-boxes">
+                    <h2 onClick={() => this.toggleEvents()}>{this.state.event.data.nameOfParty} {this.state.event.data.detailsOfParty}</h2>
+                    {this.renderFood(this.state.event.key)}
+                    <button onClick={() => this.removeItem(this.state.event.key)}>Delete Event 𝗫</button> 
+                </div>
+            
         )
     }
 }
@@ -142,22 +144,28 @@ class FormEvents extends React.Component {
     render() {
         return (
         <div>
-            <form onSubmit={this.handleSubmit}>
+            <div className="second-page---top-bar">
+                <div className="wrapper--inner">
+                    <form onSubmit={this.handleSubmit}>
 
 
-                <input type="text" name="whatParty" placeholder="What's the party?" onChange={this.handleChange} value={this.state.whatParty} />
-                
+                        <input type="text" name="whatParty" placeholder="What's the party?" onChange={this.handleChange} value={this.state.whatParty} />
+                        
 
-                <input type="text" name="partyDetails" placeholder="Tell me about the party" onChange={this.handleChange} value={this.state.partyDetails} />
+                        <input type="text" name="partyDetails" placeholder="Tell me about the party" onChange={this.handleChange} value={this.state.partyDetails} />
 
-                <button>finished!</button>
-            </form>
-            <section>
-                {this.state.events.map((event) => {
-                    return <TogglingEvents event={event} key={event.key}/>
-                })}
-                
-            </section>
+                        <button>finished!</button>
+                    </form>
+                </div>
+            </div>
+            <div>
+                    <section className="wrapper--inner second-page--event-boxes-spacing">
+                    {this.state.events.map((event) => {
+                        return <TogglingEvents event={event} key={event.key}/>
+                    })}
+                    
+                </section>
+            </div>
         </div>
         )
     }

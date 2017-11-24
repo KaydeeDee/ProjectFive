@@ -1,0 +1,33 @@
+.second-page {
+    min-height: 100vh;
+    background-image: url(../../public/styles/images/second--backgroundphoto.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1px;
+}
+
+.second-page---top-bar{
+    background: pink;
+    padding: 1px;
+}
+
+.second-page---top-bar form {
+    display: flex;
+    justify-content: space-around;
+}
+
+.second-page--event-boxes {
+    background: white;
+    min-width: 300px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    h2 {
+        text-align: center;
+    }
+}
+
+.second-page--event-boxes-spacing {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
