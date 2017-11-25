@@ -1,13 +1,11 @@
 // variables
 
-$primary-color: rgb(34, 30, 30);
-$primary-white: rgb(255, 255, 255);
-$primary-purple: rgb(98, 81, 146);
-$primary-yellow: rgb(187, 169, 56);
-$primary-green: rgb(43, 128, 62);
+$primary-black: rgb(28, 28, 28);
+$primary-white: rgb(252,247,239);
+$highlight-color: rgb(212, 172, 100);
 
-$header-text: 'Fredoka One', cursive;
-$paragraph-text: 'Raleway', sans-serif;
+$cursive-text: 'Dancing Script', cursive;
+$paragraph-text: "Roboto", sans-serif;
 
 // mixins
 
@@ -22,7 +20,6 @@ html {
     font-size: 62.5%;
 }
 
-
 // wrappers
 .wrapper--max {
     max-width: 1900px;
@@ -35,16 +32,12 @@ html {
 }
 
 .wrapper--footer-nav {
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto; 
 }
 
-h1 {
-    color: red;
-}
-
-ul {
-    margin: 0
+h1, ul {
+    margin: 0;
 }
 
 li {
@@ -53,5 +46,9 @@ li {
 
 a {
     text-decoration: none;
+}
+
+button {
+    border-radius: 10px;
 }
 

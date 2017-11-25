@@ -7,38 +7,92 @@
 }
 
 .second-page---top-bar{
-    background: pink;
+    // background: rgba($primary-white, 0.9);
     padding: 1px;
     text-align: center;
-}
-
-.second-page---top-bar form {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-    input {
-        margin-right: 5px;
-        border: none;
-    }
-    button {
-        border: none;
-        border-radius: 0;
+    h2 {
+        font-family: $cursive-text;
+        @include font-size-value(40);
+        margin-bottom: 0;
     }
 }
 
 .second-page--event-boxes {
-    background: white;
+    background: rgb(254,253,251);
     min-width: 300px;
     margin-bottom: 30px;
     margin-top: 30px;
-    h2 {
+    h3, h4, p {
         text-align: center;
+        color: $primary-black;
     }
+    h4, p {
+        font-family: $paragraph-text;
+    }
+    h4 {
+        @include font-size-value(12);
+    }
+    p {
+        @include font-size-value(15);
+        font-weight: 400;
+    }
+}
+
+.second-page--event-boxes-eventName{
+    font-family: $cursive-text;
+    @include font-size-value(25);
+    margin-bottom: 0;
+}
+
+.second-page--event-boxes-DetailsOfParty {
+    font-family: $paragraph-text;
+    @include font-size-value(20);
+    margin: 0;
+}
+
+// delete buttons
+
+.deleteEvent--button, .deleteFood--button {
+    border: none;
+    @include font-size-value(5);
+    font-family: $paragraph-text;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: lighten($primary-black, 50);
+}
+
+.deleteFood--button {
+    position: relative;
+    bottom: 1px;
+}
+
+// food form
+.foodForm {
+    margin-left: 15px;
+    @include font-size-value(15);
+    
+    button {
+        display: block;
+        margin: 10px auto;
+        transform: translateX(-8px);
+    }
+    input {
+        min-width: 160px;
+    }
+}
+
+.background--foodForm {
+    background: lighten($primary-black, 80);
+    padding-bottom: 3px;
 }
 
 .second-page--event-boxes-spacing {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     align-items: flex-start;
 }
+

@@ -41,7 +41,7 @@ class Login extends React.Component {
     login(event) {
         event.preventDefault();
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(()=>{
-                alert("You have successfully logged in! Click in the arrow below to get started!");
+                alert("You have successfully logged in! Click on the arrow below to get started.");
         });
     
 
@@ -50,25 +50,25 @@ class Login extends React.Component {
         let loginForm = '';
         if (this.state.formToShow === 'signup') {
             loginForm = (
-                <form onSubmit={this.signup} className="user-form">
+                <form onSubmit={this.signup} className="userForm  signUp">
                     <label htmlFor="email">Email: </label>
                     <input type="email" name="email" onChange={this.handleChange} />
                     <label htmlFor="password">Password: </label>
-                    <input type="password" placeholder="Password must be at least 6 characters" name="password" onChange={this.handleChange} />
-                    <label htmlFor="confirm">Confirm Password:</label>
+                    <input type="password" placeholder="Must be at least 6 characters" name="password" onChange={this.handleChange} />
+                    <label htmlFor="confirm">Confirm Password: </label>
                     <input type="password" name="confirm" onChange={this.handleChange} />
-                    <button>Sign In</button>
+                    <button className="signUpForm--button">Sign In</button>
                 </form>
             );
         }
         else if (this.state.formToShow === "login") {
             loginForm = (
-                <form onSubmit={this.login} className="user-form">
+                <form onSubmit={this.login} className="userForm LogIn">
                     <label htmlFor="email">Email: </label>
                     <input type="email" name="email" onChange={this.handleChange} />
                     <label htmlFor="password">Password: </label>
                     <input type="password" name="password" onChange={this.handleChange} />
-                    <button>Log In</button>
+                    <button className="signUpForm--button">Log In</button>
                 </form>
             );
         }

@@ -46,9 +46,11 @@ class TogglingEvents extends React.Component {
         return (
             
                 <div className="second-page--event-boxes">
-                <h2 onClick={() => this.toggleEvents()}>{this.state.event.data.nameOfParty} {this.state.event.data.detailsOfParty + ` ✚`}</h2>
+                    <h3 onClick={() => this.toggleEvents()} className="second-page--event-boxes-eventName">{this.state.event.data.nameOfParty}</h3>
+                    <h3 onClick={() => this.toggleEvents()} className="second-page--event-boxes-DetailsOfParty"> {this.state.event.data.detailsOfParty}</h3> 
+                    <h4 onClick={() => this.toggleEvents()}>See list✚</h4>
                     {this.renderFood(this.state.event.key)}
-                <button onClick={() => this.removeItem(this.state.event.key)}>𝗫 Delete Event</button> 
+                    <button onClick={() => this.removeItem(this.state.event.key)} className="deleteEvent--button">𝗫 Delete Event</button> 
                 </div>
             
         )
@@ -70,7 +72,6 @@ class FormEvents extends React.Component {
     }
 
     handleChange(event) {
-        // console.log(event.target.name, event.target.value);
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -93,7 +94,7 @@ class FormEvents extends React.Component {
                 partyDetails: ''
             });
         }else {
-            alert('Please put in a full word!');
+            alert("You can't submit empty feilds!");
         }
 
     }
@@ -148,15 +149,15 @@ class FormEvents extends React.Component {
             <div className="second-page---top-bar">
                     <div className="wrapper--inner">
                         <h2>Add An Event</h2>
-                        <form onSubmit={this.handleSubmit}>
+                        <form onSubmit={this.handleSubmit} className="userForm">
 
 
-                            <input type="text" name="whatParty" placeholder="What's the party?" onChange={this.handleChange} value={this.state.whatParty} />
+                            <input type="text" name="whatParty" placeholder="Name of the event" onChange={this.handleChange} value={this.state.whatParty} />
                             
 
-                            <input type="text" name="partyDetails" placeholder="Tell me about the party" onChange={this.handleChange} value={this.state.partyDetails} />
+                            <input type="text" name="partyDetails" placeholder="What day is it happening on?" onChange={this.handleChange} value={this.state.partyDetails} />
 
-                            <button>finished!</button>
+                            <button>Add Event</button>
                         </form>
                     </div>
                 </div>

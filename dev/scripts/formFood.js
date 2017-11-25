@@ -9,9 +9,7 @@ class FormFood extends React.Component {
             itemBeingBrought: ''
         }
         this.handleChange = this.handleChange.bind(this);
-
         this.handleSubmit = this.handleSubmit.bind(this);
-
         this.removeItem = this.removeItem.bind(this);
 
     }
@@ -24,7 +22,6 @@ class FormFood extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // console.log(this.props.keyOfEvent);
         const userItem = this.state.userBringingItem.trim();
         const itemBringing = this.state.itemBeingBrought.trim();
 
@@ -40,9 +37,8 @@ class FormFood extends React.Component {
                 itemBeingBrought: ''
             });
         } else {
-            alert("Please put in a full word!");
+            alert("Please make sure that you're submitting at leasst one word per 'box'");
         }
-    
     }
 
     componentDidMount() {
@@ -58,11 +54,9 @@ class FormFood extends React.Component {
                     key: formOne
                 })
             }
-
             this.setState({
                 formOneTotal: formOneArray
             });
-
         });
     }
 
@@ -78,22 +72,21 @@ class FormFood extends React.Component {
         }
     }
 
-
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="userBringingItem" placeholder="What's your name?" onChange={this.handleChange} value={this.state.userBringingItem} />
+                <div className="background--foodForm">
+                    <form onSubmit={this.handleSubmit} className="foodForm userForm">
+                        <input type="text" name="userBringingItem" placeholder="What's your name?" onChange={this.handleChange} value={this.state.userBringingItem} />
 
-                    <input type="text" name="itemBeingBrought" placeholder="What are you bringing?" onChange={this.handleChange} value={this.state.itemBeingBrought} />
+                        <input type="text" name="itemBeingBrought" placeholder="What are you bringing?" onChange={this.handleChange} value={this.state.itemBeingBrought} />
 
-                    <button>Submit</button>
-                </form>
+                        <button>Submit</button>
+                    </form>
+                </div>
                 {this.state.formOneTotal.map((element) => {
-                    return <div key={element.key}> <p>{element.data.nameOfUser} {element.data.nameOfFood}
-                    </p> 
-                    
-                        <button onClick={() => this.removeItem(element.key)}>Delete List Item 𝗫</button> 
+                    return <div key={element.key}> 
+                        <p> {element.data.nameOfUser} - {element.data.nameOfFood} <button onClick={() => this.removeItem(element.key)} className="deleteFood--button">𝗫</button></p> 
                     </div>
                 })}
             </div>
@@ -101,5 +94,4 @@ class FormFood extends React.Component {
     }
 }
 
-// only one export per module per default
 export default FormFood;
