@@ -30,6 +30,7 @@ class TogglingEvents extends React.Component {
         }
     }
 
+    // delete button for events
     removeItem(itemToRemove) {
         const userResponse = confirm('Are you sure you want to delete this event?')
         console.log(itemToRemove);
@@ -44,20 +45,17 @@ class TogglingEvents extends React.Component {
     
     render() {
         return (
-            
                 <div className="second-page--event-boxes">
                     <i className="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
                     <h3 onClick={() => this.toggleEvents()} className="second-page--event-boxes-eventName">{this.state.event.data.nameOfParty}</h3>
                     <h3 onClick={() => this.toggleEvents()} className="second-page--event-boxes-DetailsOfParty"> {this.state.event.data.detailsOfParty}</h3> 
-                    <h4 onClick={() => this.toggleEvents()}>See list✚</h4>
+                    <h4 onClick={() => this.toggleEvents()}>See list ✚</h4>
                     {this.renderFood(this.state.event.key)}
                     <button onClick={() => this.removeItem(this.state.event.key)} className="deleteEvent--button">𝗫 Delete Event</button> 
                 </div>
-            
         )
     }
 }
-
 
 class FormEvents extends React.Component {
     constructor() {
@@ -78,7 +76,7 @@ class FormEvents extends React.Component {
         });
     }
 
-
+    // sending info to firebase for events
     handleSubmit(event) {
         event.preventDefault();
         const nameParty = this.state.whatParty;
@@ -97,7 +95,6 @@ class FormEvents extends React.Component {
         }else {
             alert("You can't submit empty feilds!");
         }
-
     }
 
     componentDidMount() {
@@ -114,20 +111,14 @@ class FormEvents extends React.Component {
                             key: typeOfParty
                         })
                     }
-
                     this.setState({
                         events: eventsArray
                     });
-
-                });
-                
+                });   
             }
-
         });
     }
-
     render() {
-    
         return (
         <div>
             <div className="second-page---top-bar">
@@ -157,6 +148,5 @@ class FormEvents extends React.Component {
         )
     }
 }
-
 
 export default FormEvents;

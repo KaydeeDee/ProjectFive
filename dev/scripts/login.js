@@ -25,19 +25,23 @@ class Login extends React.Component {
             [event.target.name]: event.target.value
         });
     }
+    // sign up form
     signup(event) {
         event.preventDefault();
+        // message to show successful sign up
         if (this.state.password === this.state.confirm && this.state.password.length <= 6) {
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then((data) => {
                 alert("You have successfully signed up! Click the arrow below to start making your lists!")
 
             })
+            // message to show incorrect sign up
         } else {
             alert("Your password must be at least 6 characters long and should match what was put in 'confirm' password. Please try again!");
         }
 
     }
+    // login form with message to let user know they've signed in successfully
     login(event) {
         event.preventDefault();
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(()=>{

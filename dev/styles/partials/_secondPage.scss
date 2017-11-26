@@ -95,7 +95,7 @@
 
 .second-page--event-boxes-DetailsOfParty {
     font-family: $paragraph-text;
-    @include font-size-value(20);
+    @include font-size-value(16);
     margin: 0;
 }
 
@@ -107,7 +107,7 @@
     font-family: $paragraph-text;
     font-weight: 300;
     text-transform: uppercase;
-    color: lighten($primary-black, 55);
+    color: lighten($primary-black, 40);
 }
 
 .deleteFood--button {

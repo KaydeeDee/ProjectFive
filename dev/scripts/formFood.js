@@ -20,6 +20,7 @@ class FormFood extends React.Component {
         });
     }
 
+    // making sure user can't submit empty food lists and sending to firebase
     handleSubmit(event) {
         event.preventDefault();
         const userItem = this.state.userBringingItem.trim();
@@ -37,7 +38,7 @@ class FormFood extends React.Component {
                 itemBeingBrought: ''
             });
         } else {
-            alert("Please make sure that you're submitting at least one word per 'box'");
+            alert("You can't submit any empty fields! Please try again.");
         }
     }
 
@@ -59,7 +60,7 @@ class FormFood extends React.Component {
             });
         });
     }
-
+//  delete button for food items
     removeItem(itemToRemove) {
         const userResponse = confirm('Are you sure you want to delete this?')
         if (userResponse == true) {

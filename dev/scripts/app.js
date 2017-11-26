@@ -5,6 +5,17 @@ import Login from "./login";
 import FormFood from './formFood';
 import FormEvents from './formEvents';
 
+
+// Create a list app that helps user organize things like potlucks
+// Create input that takes what event the user is going to
+// Create input that takes the users name and what they are bringing
+// Connect these lists to firebase, and ensure that the "user and food" options are nested within the event list on firebase
+// Enable users to delete events or food items on those lists
+
+// STRETCH GOAL
+// Add in authenication
+
+
 // smooth scroll component
 const Link = Scroll.Link;
 
@@ -27,7 +38,7 @@ class App extends React.Component {
     }
     this.signOut = this.signOut.bind(this);
   }
-
+    // sign out button
   signOut(){
     firebase.auth().signOut();
   }
@@ -47,6 +58,7 @@ class App extends React.Component {
               <div className="wrapper--footer-nav">
                 <button className="button--signOut" onClick={this.signOut}>Sign Out</button>
               </div>
+              {/* main body of second page */}
               <FormEvents />
             </section>
           </div>
@@ -58,11 +70,15 @@ class App extends React.Component {
           <main className="wrapper--max">
               <header className="first-page-header--background">
               <div className="fixing-footer">
+              {/* nav starts */}
                 <nav className="wrapper--footer-nav">
                   <a href="https://twitter.com/intent/tweet?hashtags=lifelist" className="tweet" target="_blank"><i className="fa fa-twitter" aria-hidden="true"></i></a>
                 </nav>
+                {/* nav ends */}
+                {/* header starts */}
                 <div className="first-page-header--center-wording wrapper--inner">
                     <h1>Life List</h1>
+                    {/* login and sign up buttons/forms */}
                     <Login />
                     <Link to="test1" spy={true} smooth={true} offset={5} duration={1000}><i className="fa fa-chevron-down fa-5x" aria-hidden="true" aria-label="Go Down To Main Section"></i></Link>
                   </div>
@@ -71,6 +87,8 @@ class App extends React.Component {
                   <a href="https://twitter.com/Kate_DAngelo" target= "_blank">Made By Katie D'Angelo!</a>
                 </div>
               </header>
+              {/* header ends */}
+              {/* second page "unlocked" after sign in below */}
               {loggedIn}
             </main>
         </div>
