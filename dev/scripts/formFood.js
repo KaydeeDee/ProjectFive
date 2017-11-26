@@ -37,7 +37,7 @@ class FormFood extends React.Component {
                 itemBeingBrought: ''
             });
         } else {
-            alert("Please make sure that you're submitting at leasst one word per 'box'");
+            alert("Please make sure that you're submitting at least one word per 'box'");
         }
     }
 

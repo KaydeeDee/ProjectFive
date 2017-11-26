@@ -50,7 +50,7 @@ class Login extends React.Component {
         let loginForm = '';
         if (this.state.formToShow === 'signup') {
             loginForm = (
-                <form onSubmit={this.signup} className="userForm  signUp">
+                <form onSubmit={this.signup} className="userForm signUp">
                     <label htmlFor="email">Email: </label>
                     <input type="email" name="email" onChange={this.handleChange} />
                     <label htmlFor="password">Password: </label>
@@ -63,7 +63,7 @@ class Login extends React.Component {
         }
         else if (this.state.formToShow === "login") {
             loginForm = (
-                <form onSubmit={this.login} className="userForm LogIn">
+                <form onSubmit={this.login} className="LoginUniqueSpacing LogIn userForm">
                     <label htmlFor="email">Email: </label>
                     <input type="email" name="email" onChange={this.handleChange} />
                     <label htmlFor="password">Password: </label>
@@ -73,7 +73,7 @@ class Login extends React.Component {
             );
         }
         return (
-            <div>
+            <div className="header--login--spaceForForm">
                 <div className="header--login">
                     <ul>
                         <li><a href="" className="signup" onClick={this.formToShow}>Sign Up</a></li>

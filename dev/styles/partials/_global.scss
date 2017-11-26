@@ -1,8 +1,8 @@
 // variables
 
 $primary-black: rgb(28, 28, 28);
-$primary-white: rgb(252,247,239);
-$highlight-color: rgb(212, 172, 100);
+$primary-white: rgb(254,253,251);
+$highlight-color: rgb(127,102,102);
 
 $cursive-text: 'Dancing Script', cursive;
 $paragraph-text: "Roboto", sans-serif;
@@ -50,5 +50,21 @@ a {
 
 button {
     border-radius: 10px;
+    padding: 5px;
+    background: $primary-white;
+}
+
+// media queries
+
+@media (max-width: 1200px) {
+    .wrapper--footer-nav {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 800px) {
+    .wrapper--footer-nav {
+        max-width: 400px;
+    }
 }
 

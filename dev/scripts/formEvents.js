@@ -46,6 +46,7 @@ class TogglingEvents extends React.Component {
         return (
             
                 <div className="second-page--event-boxes">
+                    <i className="fa fa-thumb-tack fa-2x" aria-hidden="true"></i>
                     <h3 onClick={() => this.toggleEvents()} className="second-page--event-boxes-eventName">{this.state.event.data.nameOfParty}</h3>
                     <h3 onClick={() => this.toggleEvents()} className="second-page--event-boxes-DetailsOfParty"> {this.state.event.data.detailsOfParty}</h3> 
                     <h4 onClick={() => this.toggleEvents()}>See list✚</h4>
@@ -123,23 +124,6 @@ class FormEvents extends React.Component {
             }
 
         });
-
-        // dbRef.on("value", (firebaseData) => {
-        //     const eventsArray = [];
-        //     const eventsData = firebaseData.val();
-
-        //     for (let typeOfParty in eventsData) {
-        //         eventsArray.push({
-        //             data: eventsData[typeOfParty],
-        //             key: typeOfParty
-        //         })
-        //     }
-
-        //     this.setState({
-        //         events: eventsArray
-        //     });
-
-        // });
     }
 
     render() {
@@ -148,8 +132,8 @@ class FormEvents extends React.Component {
         <div>
             <div className="second-page---top-bar">
                     <div className="wrapper--inner">
-                        <h2>Add An Event</h2>
-                        <form onSubmit={this.handleSubmit} className="userForm">
+                        <h2>Your Events</h2>
+                        <form onSubmit={this.handleSubmit} className="userForm second-page--eventsForm">
 
 
                             <input type="text" name="whatParty" placeholder="Name of the event" onChange={this.handleChange} value={this.state.whatParty} />
