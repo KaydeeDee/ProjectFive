@@ -133,3 +133,24 @@ h1 {
 input[placeholder] {
     @include font-size-value(13.5);  
 }
+
+// media queries
+
+@media (max-width: 580px) {
+    .first-page-header--center-wording {
+        margin-top: 40vh;
+        h1 {
+            @include font-size-value(90);
+        }
+    }
+}
+
+@media (max-width: 440px) {
+    .tweet {
+        margin-left: 20px;
+    }
+    .first-page-header--bottom-a {
+        margin-right: 20px;
+    }
+}
+

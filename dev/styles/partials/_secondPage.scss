@@ -148,3 +148,10 @@
     }
 }
 
+@media (max-width: 580px) {
+        .second-page---top-bar h2 {
+            @include font-size-value(80);
+        }
+    }
+
+

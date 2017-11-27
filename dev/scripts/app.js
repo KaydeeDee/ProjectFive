@@ -72,7 +72,8 @@ class App extends React.Component {
               <div className="fixing-footer">
               {/* nav starts */}
                 <nav className="wrapper--footer-nav">
-                  <a href="https://twitter.com/intent/tweet?hashtags=lifelist" className="tweet" target="_blank"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+                  <a href="https://twitter.com/intent/tweet?hashtags=LifeList&amp;text= https://goo.gl/DR7ujc #LifeList" className="tweet" target="_blank"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+
                 </nav>
                 {/* nav ends */}
                 {/* header starts */}
