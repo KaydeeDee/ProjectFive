@@ -29,7 +29,7 @@ class Login extends React.Component {
     signup(event) {
         event.preventDefault();
         // message to show successful sign up
-        if (this.state.password === this.state.confirm && this.state.password.length <= 6) {
+        if (this.state.password === this.state.confirm && this.state.password.length >= 6) {
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then((data) => {
                 alert("You have successfully signed up! Click the arrow below to start making your lists!")
