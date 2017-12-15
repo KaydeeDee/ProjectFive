@@ -33,7 +33,6 @@ class TogglingEvents extends React.Component {
     // delete button for events
     removeItem(itemToRemove) {
         const userResponse = confirm('Are you sure you want to delete this event?')
-        console.log(itemToRemove);
         if (userResponse == true) {
             const dbRef = firebase.database().ref(`events/${itemToRemove}`);
             dbRef.remove();
